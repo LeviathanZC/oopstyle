@@ -40,7 +40,6 @@ public class ArithmeticService {
      * @return true if number is perfect, false in other cases.
      */
     public boolean isPerfect(int number) {
-        boolean isPerfect = false;
         int sum = 0;
         int i;
         for (i = 1; i < number; i++) {
@@ -48,8 +47,7 @@ public class ArithmeticService {
                 sum += i;
             }
         }
-        isPerfect = sum == number;
-        return isPerfect;
+        return sum == number;
     }
 
 }
