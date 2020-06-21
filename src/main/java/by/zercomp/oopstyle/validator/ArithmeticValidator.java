@@ -14,4 +14,8 @@ public class ArithmeticValidator {
         return number < 0;
     }
 
+    public static boolean isEven(int number) {
+        return (number ^ 1) == 0;
+    }
+
 }
