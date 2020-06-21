@@ -1,5 +1,6 @@
 package by.zercomp.oopstyle.service;
 
+import by.zercomp.oopstyle.entity.PlanePoint;
 import by.zercomp.oopstyle.exception.InvalidDataException;
 import by.zercomp.oopstyle.validator.ArithmeticValidator;
 
@@ -13,7 +14,7 @@ public class GeometryService {
 
     private double calcInnerCircleArea(double squareArea) throws InvalidDataException {
         validate(squareArea);
-        return  squareArea / RATIO_INNER;
+        return squareArea / RATIO_INNER;
     }
 
     private double calcInnerSquareArea(double circleArea) throws InvalidDataException {
@@ -28,10 +29,17 @@ public class GeometryService {
     }
 
     private void validate(double data) throws InvalidDataException {
-        if(ArithmeticValidator.isNegative(data)) {
+        if (ArithmeticValidator.isNegative(data)) {
             throw new InvalidDataException("Invalid data:" + data);
         }
     }
 
+    private PlanePoint whichIsCloserToZero(PlanePoint point1, PlanePoint point2) throws InvalidDataException {
+        if (point1 == null || point2 == null) {
+            throw new InvalidDataException(new StringBuilder("point1 and point2 must be not null: ").append(point1)
+                    .append(", ").append(point2).toString());
+        }
+        return point1.distFromCenter() > point2.distFromCenter() ? point2 : point1;
+    }
 
 }

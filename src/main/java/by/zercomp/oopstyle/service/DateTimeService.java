@@ -84,6 +84,7 @@ public class DateTimeService {
         validate(seconds);
         return seconds % SEC_PER_MINUTE;
     }
+
     public long inHours(long seconds) throws InvalidDataException {
         validate(seconds);
         return  inMinuites(seconds) % MIN_PER_HOUR;
