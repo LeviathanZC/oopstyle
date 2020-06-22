@@ -3,6 +3,9 @@ package by.zercomp.oopstyle.service;
 import by.zercomp.oopstyle.exception.InvalidDataException;
 import by.zercomp.oopstyle.validator.ArithmeticValidator;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class ArithmeticService {
 
     private static final int MOD_TEN = 10;
@@ -79,5 +82,29 @@ public class ArithmeticService {
         return 1 / ((x * x * x) - 6);
     }
 
+    private double calcTan(double x) {
+        return Math.tan(x);
+    }
 
+    /**
+     * Task 10
+     * @param a - start of range
+     * @param b - end of range
+     * @param h - step
+     * @return table of tan function values.
+     * @throws InvalidDataException if start of range is bigger then end.
+     */
+    public Map<Double, Double> createTable(final double a, final double b, final double h) throws InvalidDataException {
+        if (a > b) {
+            throw new InvalidDataException(new StringBuilder("first is bigger than second:")
+                    .append(a).append(" > ").append(b).toString());
+        }
+        Map<Double, Double> map = new TreeMap<Double,Double>();
+        double x = a;
+        while (x <= b) {
+            map.put(x, calcTan(x));
+            x += h;
+        }
+        return map;
+    }
 }
