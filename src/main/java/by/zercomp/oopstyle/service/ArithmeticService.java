@@ -78,4 +78,6 @@ public class ArithmeticService {
     private double whenLessThenThree(double x) {
         return 1 / ((x * x * x) - 6);
     }
+
+
 }

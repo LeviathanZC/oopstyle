@@ -12,6 +12,8 @@ public class GeometryService {
     //Площадь круга описанного вокруг квадрата большая площадь того же квадрата в π/2 раз
     private static final double RATIO_OUTER = Math.PI / 2;
 
+    private static final int CIRCLE_FORMULA = 2;
+
     private double calcInnerCircleArea(double squareArea) throws InvalidDataException {
         validate(squareArea);
         return squareArea / RATIO_INNER;
@@ -36,6 +38,7 @@ public class GeometryService {
 
     /**
      * Task 7
+     *
      * @param point1 - first point
      * @param point2 - second point
      * @return point that closer to zero Point of coord plane (0,0)
@@ -47,6 +50,20 @@ public class GeometryService {
                     .append(", ").append(point2).toString());
         }
         return point1.distFromCenter() > point2.distFromCenter() ? point2 : point1;
+    }
+
+    public double calcLengthOfCircle(double radius) throws InvalidDataException {
+        if (ArithmeticValidator.isNegative(radius)) {
+            throw new InvalidDataException("invalid radius:" + radius);
+        }
+        return CIRCLE_FORMULA * Math.PI * radius;
+    }
+
+    private double calcAreaOfCircle(double radius) throws InvalidDataException {
+        if (ArithmeticValidator.isNegative(radius)) {
+            throw new InvalidDataException("invalid radius:" + radius);
+        }
+        return Math.PI * radius * radius;
     }
 
 }
