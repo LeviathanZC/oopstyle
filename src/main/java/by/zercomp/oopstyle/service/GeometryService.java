@@ -34,6 +34,13 @@ public class GeometryService {
         }
     }
 
+    /**
+     * Task 7
+     * @param point1 - first point
+     * @param point2 - second point
+     * @return point that closer to zero Point of coord plane (0,0)
+     * @throws InvalidDataException - throws when some of points is null or both of them.
+     */
     private PlanePoint whichIsCloserToZero(PlanePoint point1, PlanePoint point2) throws InvalidDataException {
         if (point1 == null || point2 == null) {
             throw new InvalidDataException(new StringBuilder("point1 and point2 must be not null: ").append(point1)
